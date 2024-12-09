@@ -1,6 +1,18 @@
 import { render, fireEvent } from "@testing-library/react";
 import Carousel from "./Carousel";
+import App from "./App";
 import TEST_IMAGES from "./_testCommon.js";
+
+// Smoke Test
+it("renders without crashing", function() { render(<App />); });
+
+// Snapshot Test
+it("matches snapshot", function() {
+	const {asFragment} = render(<Carousel
+    photos={TEST_IMAGES}
+    title="images for testing"
+  />); 
+	expect(asFragment()).toMatchSnapshot(); });
 
 it("works when you click on the right arrow", function() {
   const { container } = render(
