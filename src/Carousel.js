@@ -34,20 +34,28 @@ import Card from "./Card";
     <div className="Carousel">
       <h1>{title}</h1>
       <div className="Carousel-main">
+        {/* Ternary Operator to check if first image */}
+      {currCardIdx !== 0 && (
         <i
           className="bi bi-arrow-left-circle"
+          data-testid="left-arrow"
           onClick={goBackward}
         />
+      )}
         <Card
           caption={currCard.caption}
           src={currCard.src}
           currNum={currCardIdx + 1}
           totalNum={total}
         />
+        {/* Ternary Operator to check if last image */}
+        {currCardIdx !== total - 1 && (
         <i
           className="bi bi-arrow-right-circle"
+          data-testid="right-arrow"
           onClick={goForward}
         />
+        )}
       </div>
     </div>
   );
